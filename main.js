@@ -4,21 +4,12 @@ const Extra = require('telegraf/extra')
 const Markup = require('telegraf/markup')
 const bot = new Telegraf('947041182:AAGHj9uUinzWKnEm93uTUhATJxWqs5hmcSk')
 
-process
-    .on('SIGTERM', shutdown('SIGTERM'))
-    .on('SIGINT', shutdown('SIGINT'))
-    .on('uncaughtException', shutdown('uncaughtException'));
+var http = require("http");
+setInterval(function() {
+    http.get("http://ramzyabbot.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
 
-function shutdown(signal) {
-    return (err) => {
-        console.log(`${signal}...`);
-        if (err) console.error(err.stack || err);
-        setTimeout(() => {
-            console.log('...waited 5s, exiting.');
-            process.exit(err ? 1 : 0);
-        }, 5000).unref();
-    };
-}
+
 
 var user1 = -1
 // var hearts = { "heart_red": "❤️", "heart_orange": "🧡", "heart_yellow": "💛", "heart_green": "💚", "heart_blue": "💙", "heart_purple": "💜", "heart_black": "🖤", "heart_pink": "💖" }
