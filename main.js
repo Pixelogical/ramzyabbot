@@ -2,7 +2,7 @@ const Group = require('./Group')
 const Telegraf = require('telegraf')
 const Extra = require('telegraf/extra')
 const Markup = require('telegraf/markup')
-const bot = new Telegraf('803868165:AAFvAHJOX85nzxrvOZaAb13PAmJPVGDiMmM')
+const bot = new Telegraf('947041182:AAGHj9uUinzWKnEm93uTUhATJxWqs5hmcSk')
 
 var user1 = -1
 // var hearts = { "heart_red": "❤️", "heart_orange": "🧡", "heart_yellow": "💛", "heart_green": "💚", "heart_blue": "💙", "heart_purple": "💜", "heart_black": "🖤", "heart_pink": "💖" }
@@ -493,6 +493,6 @@ function addHash(ctx, group) {
     }
 }
 
-// bot.telegram.setWebhook('https://5a5c5138.ngrok.io')
+bot.telegram.setWebhook('https://ramzyabbot.herokuapp.com/')
 bot.startWebhook('', {}, 8000)
 bot.launch();
