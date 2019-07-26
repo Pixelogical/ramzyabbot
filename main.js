@@ -5,10 +5,20 @@ const Markup = require('telegraf/markup')
 const bot = new Telegraf('947041182:AAGHj9uUinzWKnEm93uTUhATJxWqs5hmcSk')
 
 process
-  .on('SIGTERM', shutdown('SIGTERM'))
-  .on('SIGINT', shutdown('SIGINT'))
-  .on('uncaughtException', shutdown('uncaughtException'));
+    .on('SIGTERM', shutdown('SIGTERM'))
+    .on('SIGINT', shutdown('SIGINT'))
+    .on('uncaughtException', shutdown('uncaughtException'));
 
+function shutdown(signal) {
+    return (err) => {
+        console.log(`${signal}...`);
+        if (err) console.error(err.stack || err);
+        setTimeout(() => {
+            console.log('...waited 5s, exiting.');
+            process.exit(err ? 1 : 0);
+        }, 5000).unref();
+    };
+}
 
 var user1 = -1
 // var hearts = { "heart_red": "❤️", "heart_orange": "🧡", "heart_yellow": "💛", "heart_green": "💚", "heart_blue": "💙", "heart_purple": "💜", "heart_black": "🖤", "heart_pink": "💖" }
@@ -198,52 +208,52 @@ bot.on('inline_query', async (ctx) => {
             ]]
         }
     }
-    // , {
-    //     type: 'article',
-    //     id: "759152",
-    //     thumb_url: "http://assets.funnygames.org/games/assets/screenshots/6/112626/91055/mastermind-online-oss-382976.jpg?r=1504694223018",
-    //     photo_width: 10,
-    //     photo_height: 10,
-    //     title: "مرموز 🚩",
-    //     description: "بدون تکرار\nهرکی 25 امتیاز بگیره برنده س",
-    //     parse_mode: "Markdown",
-    //     input_message_content: { message_text: "input_message_content <a href='https://s3.amazonaws.com/cloud.minroob.com/img/intro-small-w.jpg'> </a>", parse_mode: "HTML" },
-    //     reply_markup: {
-    //         "inline_keyboard": [[
-    //             {
-    //                 "text": "باشه، بزن بریم",
-    //                 "callback_data": "startgame::" + JSON.stringify(userData1)
-    //             }
-    //             // ,{
-    //             //     "text": "هرکی 25 شد برنده س",
-    //             //     "callback_data": "startpoint::" + JSON.stringify(userData1)
-    //             // }
-    //         ]]
-    //     }
-    // }, {
-    //     type: 'article',
-    //     id: "759153",
-    //     thumb_url: "http://assets.funnygames.org/games/assets/screenshots/6/112626/91055/mastermind-online-oss-382976.jpg?r=1504694223018",
-    //     photo_width: 10,
-    //     photo_height: 10,
-    //     title: "مرموز 🚩",
-    //     description: "با تکرار - تا 25 امتیاز",
-    //     parse_mode: "Markdown",
-    //     input_message_content: { message_text: "input_message_content <a href='https://s3.amazonaws.com/cloud.minroob.com/img/intro-small-w.jpg'> </a>", parse_mode: "HTML" },
-    //     reply_markup: {
-    //         "inline_keyboard": [[
-    //             {
-    //                 "text": "باشه، بزن بریم",
-    //                 "callback_data": "startgame::" + JSON.stringify(userData1)
-    //             }
-    //             // ,{
-    //             //     "text": "هرکی 25 شد برنده س",
-    //             //     "callback_data": "startpoint::" + JSON.stringify(userData1)
-    //             // }
-    //         ]]
-    //     }
-    // }
-])
+        // , {
+        //     type: 'article',
+        //     id: "759152",
+        //     thumb_url: "http://assets.funnygames.org/games/assets/screenshots/6/112626/91055/mastermind-online-oss-382976.jpg?r=1504694223018",
+        //     photo_width: 10,
+        //     photo_height: 10,
+        //     title: "مرموز 🚩",
+        //     description: "بدون تکرار\nهرکی 25 امتیاز بگیره برنده س",
+        //     parse_mode: "Markdown",
+        //     input_message_content: { message_text: "input_message_content <a href='https://s3.amazonaws.com/cloud.minroob.com/img/intro-small-w.jpg'> </a>", parse_mode: "HTML" },
+        //     reply_markup: {
+        //         "inline_keyboard": [[
+        //             {
+        //                 "text": "باشه، بزن بریم",
+        //                 "callback_data": "startgame::" + JSON.stringify(userData1)
+        //             }
+        //             // ,{
+        //             //     "text": "هرکی 25 شد برنده س",
+        //             //     "callback_data": "startpoint::" + JSON.stringify(userData1)
+        //             // }
+        //         ]]
+        //     }
+        // }, {
+        //     type: 'article',
+        //     id: "759153",
+        //     thumb_url: "http://assets.funnygames.org/games/assets/screenshots/6/112626/91055/mastermind-online-oss-382976.jpg?r=1504694223018",
+        //     photo_width: 10,
+        //     photo_height: 10,
+        //     title: "مرموز 🚩",
+        //     description: "با تکرار - تا 25 امتیاز",
+        //     parse_mode: "Markdown",
+        //     input_message_content: { message_text: "input_message_content <a href='https://s3.amazonaws.com/cloud.minroob.com/img/intro-small-w.jpg'> </a>", parse_mode: "HTML" },
+        //     reply_markup: {
+        //         "inline_keyboard": [[
+        //             {
+        //                 "text": "باشه، بزن بریم",
+        //                 "callback_data": "startgame::" + JSON.stringify(userData1)
+        //             }
+        //             // ,{
+        //             //     "text": "هرکی 25 شد برنده س",
+        //             //     "callback_data": "startpoint::" + JSON.stringify(userData1)
+        //             // }
+        //         ]]
+        //     }
+        // }
+    ])
     return ctx.answerInlineQuery(results, { is_personal: true, cache_time: 0 })
 })
 
