@@ -494,5 +494,5 @@ function addHash(ctx, group) {
 }
 
 bot.telegram.setWebhook('https://ramzyabbot.herokuapp.com/')
-bot.startWebhook('', {}, 8000)
+bot.startWebhook('', {}, process.env.PORT || 8000)
 bot.launch();
