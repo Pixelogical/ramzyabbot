@@ -4,6 +4,12 @@ const Extra = require('telegraf/extra')
 const Markup = require('telegraf/markup')
 const bot = new Telegraf('947041182:AAGHj9uUinzWKnEm93uTUhATJxWqs5hmcSk')
 
+process
+  .on('SIGTERM', shutdown('SIGTERM'))
+  .on('SIGINT', shutdown('SIGINT'))
+  .on('uncaughtException', shutdown('uncaughtException'));
+
+
 var user1 = -1
 // var hearts = { "heart_red": "❤️", "heart_orange": "🧡", "heart_yellow": "💛", "heart_green": "💚", "heart_blue": "💙", "heart_purple": "💜", "heart_black": "🖤", "heart_pink": "💖" }
 var hearts = {
@@ -493,6 +499,6 @@ function addHash(ctx, group) {
     }
 }
 
-bot.telegram.setWebhook('https://ramzyabbot.herokuapp.com/')
+// bot.telegram.setWebhook('https://ramzyabbot.herokuapp.com/')
 bot.startWebhook('', {}, process.env.PORT || 8000)
 bot.launch();
