@@ -1,0 +1,20 @@
+{
+  "name": "ramzyabbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pixelogical/ramzyabbot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pixelogical/ramzyabbot/issues"
+  },
+  "homepage": "https://github.com/Pixelogical/ramzyabbot#readme"
+}
