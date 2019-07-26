@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Pixelogical/ramzyabbot/issues"
   },
-  "homepage": "https://github.com/Pixelogical/ramzyabbot#readme"
+  "homepage": "https://github.com/Pixelogical/ramzyabbot#readme",
+  "dependencies": {
+    "telegraf": "^3.30.1"
+  }
 }
